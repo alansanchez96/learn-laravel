@@ -8,3 +8,4 @@ Aprendido
 - Seeders y Factory
 - Consultas Eloquent
 - Read a las Vistas atraves de los Controladores
+- Create y Update desde las Vista (Formularios method post y put)

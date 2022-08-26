@@ -20,9 +20,13 @@ use Illuminate\Support\Facades\Route;
 
 // Agrupar codigo y tenerlo más organizado
 Route::controller(CursoController::class)->group( function(){
+    // Los name no pueden repetirse
     Route::get('/cursos', 'index')->name('cursos.index');
     Route::get('/cursos/create', 'create')->name('cursos.create');
+    Route::post('/cursos/create', 'store')->name('cursos.store');          
     Route::get('/cursos/{id}', 'show')->name('cursos.show');
+    Route::get('/cursos/{curso}/edit', 'edit')->name('cursos.edit');    // {curso} fue puesto en lugar de {id} por el metodo edit
+    Route::put('/cursos/{curso}', 'update')->name('cursos.update');
 });
 
 // Tipos de variables para las urls. Estructura.
