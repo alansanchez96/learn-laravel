@@ -1,0 +1,10 @@
+Aprendido
+
+- Rutas
+- Controladores
+- Vistas
+- Migraciones, editar y crear tablas en las Migraciones
+- Eloquent
+- Seeders y Factory
+- Consultas Eloquent
+- Read a las Vistas atraves de los Controladores
