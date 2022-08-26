@@ -66,3 +66,9 @@ php artisan make:migration {add_nameColumn_to_nameTable_table}
 ->paginate()
         => Por default muestra los primeros 15 registros por pagina
         Por parametro recibe el máximo que quiere recibir por pagina
+
+
+** Requests **
+
+php artisan make:request NombreRequest
+        => Crea la carpeta request/NombreRequest para ingresar las validaciones y más dentro de este nuevo archivo
