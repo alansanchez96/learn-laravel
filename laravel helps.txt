@@ -1,0 +1,68 @@
+** Migraciones **
+
+php artisan make:migration {create_nombreTabla_table}
+    #   => Creará una nueva migracion con todo incluido automaticamente
+
+php artisan migrate:reset
+    #   => Borra todas las migraciones
+
+php artisan migrate:rollback
+    #   => Re hace los cambios de la última migracion
+
+php artisan migrate:fresh
+    #   => Borra todas las tablas y registros y las vuelve a crear (Se recomienda usar cuando la app está en desarrollo)
+
+php artisan migrate:refresh
+    #   => Hace un rollback a todas las lista de migraciones y las vuelve a migrar
+
+*** Para agregar una columna a una tabla ya creada y que contenga registros dentro, creamos una nueva migración
+php artisan make:migration {add_nameColumn_to_nameTable_table}
+    #   => Creamos una nueva migración que modificará la tabla seleccion ada una vez que migremos nuevamente
+        (Se recomienda hacerla null para que no afecten errores con el metodo ->nullable)
+        Si queres colocarla es una posicion especifica, el metodo ->after debes usar.
+
+*** Para poder editar la columna de una tabla (Ejemplo: name es varchar(255) y quiero que sea varchar(60)) entonces usamos...
+    #   => Instalamos la dependencia doctrine/dbal
+            "composer require doctrine/dbal"
+        Y creamos una nueva migracion con el nombre {cambiar_propiedad_to_nameTable_table}
+        Cambiamos la propiedad en fnUp y fnDown. En fnUp van los cambios a la propiedad y fnDown sus propiedades actuales
+
+
+** Seeders & Factory ** 
+
+# Se pueden crear seeders para rellenar las bases de datos de manera automatica y super simplificada
+    =>  (php artisan make:seed {NombreSeeder})
+# Pero para ser sencillo, desde laravel 8 se inicializaron los factorys
+    =>  (php artisan make:factory {Nombre} --model=Nombre)
+    Los factorys se llenan con datos que quieras ingresar a la base de dato automaticamente, ya sea con oraciones, nombres, elementos randoms, etc
+
+** Elocuent (ActiveRecord) **
+
+->all()     
+        => Se trae toda la información de DB en forma de objetos
+
+->where('String param1 = columna', 'param2 = indicador' , 'param3 = $model->información')
+        => Se trae toda la información de DB que coincida con "param3" en forma de array
+        # Nota: Puedes usar el metodo ->first() para que en vez de array lo convierta en un objeto
+        # Nota2: Tambien puede recibir en el param2 indicadores para filtrar con mayor presición. 
+            EXAMPLE: where('name', 'like', 'Alan');     // Traerá todos los registros que contengan el string {Alan}
+            EXAMPLE: where('id', '>=', '50');           // Traera todos los registros mayores o igual a {50}
+
+->select('String params = ex1, ex2, ex3')
+        => Selecciona solo la información de las columnas especificadas en los parametros
+        # Nota: También puedes dar alias. EXAMPLE: 'name as tittle'
+
+->find($id)
+        => Trae toda la información del registro que contenga el id del parametro
+
+// Metodos para controlar los registros
+
+->orderBy('String param1 = columna', 'String param2 = asc/desc')
+        => Ordena segun la columna recibida en el param1 según su indicacion en param2
+
+->take(int param1)
+        => Recibe como parametro un limite de los registros que quieras obtener
+
+->paginate()
+        => Por default muestra los primeros 15 registros por pagina
+        Por parametro recibe el máximo que quiere recibir por pagina
