@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\CursoController;
+use App\Http\Controllers\HomeController;
+use App\Mail\Email;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,14 +34,30 @@ use Illuminate\Support\Facades\Route;
 }); */
 
 // Una opcion más limpia para no agrupar el código y hacerlo todo en 1 linea
-/* Route::resource('cursos', CursoController::class ); */
-# Por defecto las URLs que tengan dinamismo obtendran como resultado el nombre "edit, create, etc"
-# Si quieres evitar esto, vé a app/Providers/AppServicesProvider y edita el metodo 'boot' con el metodo Route::resourceVerbs([ arreglo asociativo ])
+Route::resource('cursos', CursoController::class );
+    # Por defecto las URLs que tengan dinamismo obtendran como resultado el nombre "edit, create, etc"
+    # Si quieres evitar esto, vé a app/Providers/AppServicesProvider y edita el metodo 'boot' con el metodo Route::resourceVerbs([ arreglo asociativo ])
 
 // Dado el caso de querer cambiar por completo el nombre de las rutas, tenemos estos metodos
+/* Route::resource('asignaturas', CursoController::class )->parameters(['asignaturas' => 'curso'])->names('cursos'); */
     # ->names('nombreOriginal') : El argumento que recibe indicara a los controladores de su nombre
     # ->parameters(['nuevaUrl' => 'nombreVariable']) : Como argumento recibe un array asoc y están para indicar el nombre de las variables que reciben las urls dinamicas
-Route::resource('asignaturas', CursoController::class )->parameters(['asignaturas' => 'curso'])->names('cursos');
+
+Route::get('/', HomeController::class)->name('home');
+
+Route::view('/nosotros', 'nosotros')->name('nosotros');
+
+Route::get('/contacto', function(){
+
+    $email = new Email;
+
+    Mail::to('email_a_enviar@remitente.com')->send($email);
+
+    return 'Mensaje enviado OK';
+
+});
+
+
 
 
 

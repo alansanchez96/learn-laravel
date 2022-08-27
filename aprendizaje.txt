@@ -18,3 +18,5 @@ Aprendido
     ** Optimizacion del código escrito hasta el momento **
 - Optimizacion de las Rutas con el metodo ::resource
 - Adhesion de URLs amigables con slug
+- Implementar includes y operadores ternarios con el metodo {isRoute('ruta_a_consultar')}
+- Envios de emails atraves de Mailtrap
