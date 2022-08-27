@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 }); */
 
 // Agrupar codigo y tenerlo más organizado
-Route::controller(CursoController::class)->group( function(){
+/* Route::controller(CursoController::class)->group( function(){
     // Los name no pueden repetirse
     Route::get('/cursos', 'index')->name('cursos.index');
     Route::get('/cursos/create', 'create')->name('cursos.create');
@@ -28,7 +28,20 @@ Route::controller(CursoController::class)->group( function(){
     Route::get('/cursos/{curso}/edit', 'edit')->name('cursos.edit');    // {curso} fue puesto en lugar de {id} por el metodo edit
     Route::put('/cursos/{curso}', 'update')->name('cursos.update');
     Route::delete('/cursos/{curso}', 'destroy')->name('cursos.delete');
-});
+}); */
+
+// Una opcion más limpia para no agrupar el código y hacerlo todo en 1 linea
+/* Route::resource('cursos', CursoController::class ); */
+# Por defecto las URLs que tengan dinamismo obtendran como resultado el nombre "edit, create, etc"
+# Si quieres evitar esto, vé a app/Providers/AppServicesProvider y edita el metodo 'boot' con el metodo Route::resourceVerbs([ arreglo asociativo ])
+
+// Dado el caso de querer cambiar por completo el nombre de las rutas, tenemos estos metodos
+    # ->names('nombreOriginal') : El argumento que recibe indicara a los controladores de su nombre
+    # ->parameters(['nuevaUrl' => 'nombreVariable']) : Como argumento recibe un array asoc y están para indicar el nombre de las variables que reciben las urls dinamicas
+Route::resource('asignaturas', CursoController::class )->parameters(['asignaturas' => 'curso'])->names('cursos');
+
+
+
 
 // Tipos de variables para las urls. Estructura.
 /* Route::get('/cursos/{curso}/{categoria}', function ($curso, $categoria = null) {

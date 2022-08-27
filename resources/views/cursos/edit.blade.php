@@ -8,8 +8,8 @@
     <h1>Editar curso: {{ $curso->nombre }}</h1>
 
     <form action="{{ route('cursos.update', $curso->id) }}" method="post">
-        @csrf
         @method('put')
+        @csrf
 
         <input type="text" name="nombre" placeholder="Nombre del curso" value="{{ old('nombre', $curso->nombre) }}"><br>
         @error('nombre')

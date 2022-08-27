@@ -1,6 +1,7 @@
 Aprendido
 
 - Rutas
+- Agrupar las rutas
 - Controladores
 - Vistas
 - Migraciones, editar y crear tablas en las Migraciones
@@ -13,3 +14,7 @@ Aprendido
 - Optimizar el codigo de C (create) U (update) del controlador y con el modelo
 - Delete a los registros desde la Vista
     (CRUD Basico completo)
+
+    ** Optimizacion del código escrito hasta el momento **
+- Optimizacion de las Rutas con el metodo ::resource
+- Adhesion de URLs amigables con slug

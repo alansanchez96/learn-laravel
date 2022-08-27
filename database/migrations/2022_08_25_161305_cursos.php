@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('cursos', function(Blueprint $table){
             $table->id();
             $table->string('nombre');
+            $table->string('slug');
             $table->text('descripcion');
             $table->string('categoria', 100);
             $table->timestamps();   // created_at updated_at

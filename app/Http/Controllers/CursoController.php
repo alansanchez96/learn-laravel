@@ -33,7 +33,7 @@ class CursoController extends Controller
         $curso->save(); */
 
         // Nuevo metodo para ahorrar lineas de código
-        $curso = Curso::created($request->all());
+        $curso = Curso::create($request->all());
 
         // Redireccionamos al usuario a la ruta espeficada (.show necesita una referencia para poder traerla) pero Laravel entiende por defecto que si llamamos a la instancia, debe traerse el id. Por lo tanto ->id es opcional.
         return redirect()->route('cursos.show', $curso);
@@ -48,10 +48,10 @@ class CursoController extends Controller
         return view('cursos.edit', compact('curso'));
     }
     // Metodo de toda la vida
-    public function show($id)
+    public function show( Curso $curso )
     {
 
-        $curso = Curso::find($id);
+        /* $curso = Curso::find($id); */
 
         // compact('parametro = show($curso)') === ['curso' => $curso];
         return view('cursos.show', compact('curso'));
@@ -63,7 +63,7 @@ class CursoController extends Controller
         // return $request->all();
         // return $curso;
 
-        $curso = Curso::created($request->all());
+        $curso = Curso::create($request->all());
 
         return redirect()->route('cursos.show', $curso);    // Laravel entiende que $curso por defecto tomará el ID
     }

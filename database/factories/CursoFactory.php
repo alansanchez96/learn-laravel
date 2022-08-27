@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Curso;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,8 +19,10 @@ class CursoFactory extends Factory
      */
     public function definition()
     {
+        $nombre = $this->faker->name();
         return [
-            'nombre' => $this->faker->name(),
+            'nombre' => $nombre,
+            'slug' => Str::slug($nombre, '-'),
             'descripcion' => $this->faker->text(),
             'categoria' => $this->faker->randomElement(['Desarrollo web', 'Diseño UI UX'])
         ];

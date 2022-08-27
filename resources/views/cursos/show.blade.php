@@ -10,7 +10,7 @@
     <h3>Categoria: <b>{{$curso->categoria}}</b></h3>
     <p>Descripcion: <i>{{$curso->descripcion}}</i></p>
 
-    <form method="post" action="{{ route('cursos.delete', $curso->id) }}">
+    <form method="post" action="{{ route('cursos.destroy', $curso->id) }}">
         @csrf
         @method('delete')
         <input type="submit" value="Eliminar">

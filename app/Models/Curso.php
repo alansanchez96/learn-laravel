@@ -13,5 +13,11 @@ class Curso extends Model
     protected $fillable = ['nombre', 'descripcion', 'categoria'];
 
     // $guarded está solo para ignorar la tabla mencionada
-    /* protected $guarded = ['tabla_a_ignorar'] */
+    /* protected $guarded = ['tabla_a_ignorar']; */
+
+    // URL Amigable
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }
