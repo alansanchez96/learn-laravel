@@ -27,6 +27,7 @@ Route::controller(CursoController::class)->group( function(){
     Route::get('/cursos/{id}', 'show')->name('cursos.show');
     Route::get('/cursos/{curso}/edit', 'edit')->name('cursos.edit');    // {curso} fue puesto en lugar de {id} por el metodo edit
     Route::put('/cursos/{curso}', 'update')->name('cursos.update');
+    Route::delete('/cursos/{curso}', 'destroy')->name('cursos.delete');
 });
 
 // Tipos de variables para las urls. Estructura.

@@ -67,4 +67,10 @@ class CursoController extends Controller
 
         return redirect()->route('cursos.show', $curso);    // Laravel entiende que $curso por defecto tomará el ID
     }
+
+    public function destroy(Curso $curso){
+        $curso->delete();
+
+        return redirect()->route('cursos.index');
+    }
 }

@@ -9,3 +9,7 @@ Aprendido
 - Consultas Eloquent
 - Read a las Vistas atraves de los Controladores
 - Create y Update desde las Vista (Formularios method post y put)
+- Validaciones (Por Controladores y por make:request)
+- Optimizar el codigo de C (create) U (update) del controlador y con el modelo
+- Delete a los registros desde la Vista
+    (CRUD Basico completo)
