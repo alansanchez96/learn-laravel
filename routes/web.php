@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CursoController;
+use App\Http\Controllers\EmailController;
 use App\Http\Controllers\HomeController;
 use App\Mail\Email;
 use Illuminate\Support\Facades\Mail;
@@ -47,15 +48,8 @@ Route::get('/', HomeController::class)->name('home');
 
 Route::view('/nosotros', 'nosotros')->name('nosotros');
 
-Route::get('/contacto', function(){
-
-    $email = new Email;
-
-    Mail::to('email_a_enviar@remitente.com')->send($email);
-
-    return 'Mensaje enviado OK';
-
-});
+Route::get('/contacto', [EmailController::class, 'index'])->name('contacto.index');
+Route::post('/contacto', [EmailController::class, 'store'])->name('contacto.store');
 
 
 

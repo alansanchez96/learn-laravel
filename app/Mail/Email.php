@@ -11,6 +11,7 @@ class Email extends Mailable
 {
 
     public $subject = "Información de contacto";
+    public $mailer22;
 
     use Queueable, SerializesModels;
 
@@ -19,9 +20,9 @@ class Email extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($contenido)
     {
-        //
+        $this->mailer22 = $contenido;
     }
 
     /**

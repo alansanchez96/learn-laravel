@@ -9,7 +9,7 @@
 
     <style>
         .active{
-            color: lightcoral;
+            color: rgb(232, 80, 80);
         }
     </style>
 
